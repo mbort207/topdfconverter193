@@ -7,7 +7,7 @@ There have been so many times I wanted to quickly change different file formats 
 ## How It Works
 This program reads the file type, then converts it to a pdf accordingly. Based on user input, it then decides to delete the original file or to keep both versions, then places the file back into the original folder.
 
-![System diagram](documents/193projectdiagram.drawio.png)
+![System diagram](documents/cs193projectdiagram.drawio.png)
 
 ## Tech Stack
 
