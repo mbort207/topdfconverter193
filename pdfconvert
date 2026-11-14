@@ -1,1 +1,4 @@
-
+#!/usr/bin/env bash
+# else
+echo "Usage: ./pdfconvert ogfile newfiletype"
+exit 1
