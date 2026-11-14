@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
 # else
-echo "Usage: ./pdfconvert ogfile "
-exit 1
+if [ "$1" == *.png ]; then
+	output="${1%.png}.pdf"
+	magick "$1" -quality 100 "$output"
+	echo "Converted: $1 -> $output"
+	exit 1	
+else 
+	echo "Usage: ./pdfconvert ogfile "
+	exit 1
+fi
