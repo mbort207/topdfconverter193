@@ -38,12 +38,8 @@ elif [[ "$1" == *.docx || "$1" == *.pptx ||  "$1" == *.xlsx ||  "$1" == *.txt ]]
 		exit 1
 	fi
 	exit 0
-
-elif [[ "$1" == *.* ]]; then
-	echo "Supported file types: .png, .jpeg, .jpg, .docx, .pptx, .xlsx, .txt"
-	exit 1
 else
-	echo "Usage: ./pdfconvert ogfile "
+	echo "Supported file types: .png, .jpeg, .jpg, .docx, .pptx, .xlsx, .txt"
 	exit 1
 fi
 
