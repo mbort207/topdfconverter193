@@ -12,7 +12,7 @@ This program reads the file type, then converts it to a pdf accordingly. Based o
 ## Tech Stack
 
 - **Language:** Bash 
-- **External tools:** LibreOffice, Weasyprint, enscript, pandoc.
+- **External tools:** LibreOffice, ImageMagick.
 
 ## Setup
 
