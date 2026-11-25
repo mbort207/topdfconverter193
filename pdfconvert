@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# else
 if [[ ! $# -eq 1 ]]; then
 	echo "Usage: ./pdfconvert ogfile "
 	exit 1
