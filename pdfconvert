@@ -31,7 +31,7 @@ elif [[ "$1" == *.jpeg || "$1" == *.jpg ]]; then
 	exit 0
 elif [[ "$1" == *.docx || "$1" == *.pptx ||  "$1" == *.xlsx ||  "$1" == *.txt ]]; then
 	output="${1%.*}.pdf"
-	libreoffice --headless --convert-to pdf "$1" --outdir "$(dirname $1)"
+	libreoffice --headless --convert-to pdf "$1" --outdir "$(dirname "$1")"
 	if [ $? -eq 0 ]; then
 		echo "Converted: $1 -> $output"
 	else
