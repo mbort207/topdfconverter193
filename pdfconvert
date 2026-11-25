@@ -10,7 +10,21 @@ if [[ "$1" == *.png ]]; then
 		exit 1
 	fi
 	exit 0	
-# elif [ "$1" == *.jpeg || ""
-#	echo "Usage: ./pdfconvert ogfile "
-#	exit 1
+elif [[ "$1" == *.jpeg || "$1" == *.jpg ]]; then
+	output="${1%.*}.pdf"
+	magick "$1" -quality 100 "$output"
+	if [ $? -eq 0 ]; then
+		echo "Converted: $1 -> $output"
+	else
+		echo "could not create file"
+		exit 1
+	fi
+	exit 0
+elif [[ "$1" == *.* ]]; then
+	echo "Supported file types: .png, .jpeg, .jpg, .docx, .pptx, .xlsx, .txt"
+	exit 1
+else
+	echo "Usage: ./pdfconvert ogfile "
+	exit 1
 fi
+
