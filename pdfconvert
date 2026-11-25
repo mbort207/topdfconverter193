@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 # else
-if [ "$1" == *.png ]; then
+if [[ "$1" == *.png ]]; then
 	output="${1%.png}.pdf"
 	magick "$1" -quality 100 "$output"
-	echo "Converted: $1 -> $output"
+	if [ $? -eq 0 ]; then
+		echo "Converted: $0 -> $output"
+	else
+		echo "could not create file"
+	fi
 	exit 1	
-else 
-	echo "Usage: ./pdfconvert ogfile "
-	exit 1
+# elif [ "$1" == *.jpeg || ""
+#	echo "Usage: ./pdfconvert ogfile "
+#	exit 1
 fi
