@@ -22,7 +22,7 @@ This program reads the file type, then converts it to a pdf accordingly. Based o
 
 ```bash
 git clone https://github.com/mbort207/topdfconverter193/
-cd pdfconvert
+cd topdfconverter193
 ./install.sh 
 ```
 
