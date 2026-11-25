@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 # else
+if [[ ! $# -eq 1 ]]; then
+	echo "Usage: ./pdfconvert ogfile "
+	exit 1
+fi
+if [[ ! -f "$1" ]]; then
+    echo "File not found. Try again!"
+    exit 1
+fi
+
 if [[ "$1" == *.png ]]; then
 	output="${1%.png}.pdf"
 	magick "$1" -quality 100 "$output"
@@ -20,6 +29,17 @@ elif [[ "$1" == *.jpeg || "$1" == *.jpg ]]; then
 		exit 1
 	fi
 	exit 0
+elif [[ "$1" == *.docx || "$1" == *.pptx ||  "$1" == *.xlsx ||  "$1" == *.txt ]]; then
+	output="${1%.*}.pdf"
+	libreoffice --headless --convert-to pdf "$1" --outdir "$(dirname $1)"
+	if [ $? -eq 0 ]; then
+		echo "Converted: $1 -> $output"
+	else
+		echo "could not create file"
+		exit 1
+	fi
+	exit 0
+
 elif [[ "$1" == *.* ]]; then
 	echo "Supported file types: .png, .jpeg, .jpg, .docx, .pptx, .xlsx, .txt"
 	exit 1
