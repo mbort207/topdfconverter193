@@ -59,6 +59,7 @@ will return the docx. file as a pdf, keeping the old file.
 - [ ] Pdf back to other type.
 - [ ] Allow markdown to pdf.
 - [ ] Allow you to move it to a different folder when changing file type.
+- [ ] Fix same-name files to pdf
 
 ## Author
 
