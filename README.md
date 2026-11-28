@@ -16,15 +16,19 @@ This program reads the file type, then converts it to a pdf accordingly. Based o
 
 ## Setup
 
-1. clone the repository and cd into the project
-2. run the commands to download needed dependencies
-3. you are ready!
-
+1. clone the repository
 ```bash
 git clone https://github.com/mbort207/topdfconverter193/
-cd topdfconverter193
-./install.sh 
 ```
+2. cd into the project (use pwd, cd, and ls to navigate)
+```bash
+cd topdfconverter193
+```
+3. run the commands to download needed dependencies
+```bash
+./install.sh
+```
+4. You are ready! Follow the usage below for best results!
 
 ## Usage
 
