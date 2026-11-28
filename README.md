@@ -28,16 +28,27 @@ cd topdfconverter193
 
 ## Usage
 
-How to actually run the thing, with examples.
+How do you use it?
 
 ```bash
-pdfconvert ~/file.txt true 
+./pdfconvert ~/file.txt true 
 ```
 will return the txt file as a pdf, deleting the old file.
 ```bash
-pdfconvert ~/file.docx false 
+./pdfconvert ~/file.docx false 
 ```
-will return the docx. file as a pdf, keeping the old file. (default).
+&
+```bash
+./pdfconvert ~/file.docx
+```
+will return the docx. file as a pdf, keeping the old file.
+
+
+**Supported file types:**
+- **Photos:** .png, .jpeg, .jpg
+- **Office Documents:** .docx, .pptx, .xlsx
+- **Other:** .txt
+- ...and more to come!
 
 ## Roadmap
 
