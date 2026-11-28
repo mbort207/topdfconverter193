@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-if [[ ! $# -eq 1 ]]; then
-	echo "Usage: ./pdfconvert ogfile "
+if [[ ! $# -eq 1 && ! $# -eq 2 ]]; then
+	echo "Usage: ./pdfconvert ogfile true/false"
 	exit 1
 fi
 if [[ ! -f "$1" ]]; then
@@ -8,38 +8,54 @@ if [[ ! -f "$1" ]]; then
     exit 1
 fi
 
-if [[ "$1" == *.png ]]; then
-	output="${1%.png}.pdf"
-	magick "$1" -quality 100 "$output"
-	if [ $? -eq 0 ]; then
-		echo "Converted: $1 -> $output"
-	else
-		echo "could not create file"
-		exit 1
-	fi
-	exit 0	
-elif [[ "$1" == *.jpeg || "$1" == *.jpg ]]; then
+if [[ ! "${2,,}" == true && ! "${2,,}" == false && ! -z "$2" ]]; then
+	echo "$2 invalid. Please type either \"true\" or \"false\" for the second argument!"
+	exit 1
+fi
+converted=false
+if [[ ${1,,} == *.png ]]; then
 	output="${1%.*}.pdf"
 	magick "$1" -quality 100 "$output"
 	if [ $? -eq 0 ]; then
 		echo "Converted: $1 -> $output"
+		converted=true
 	else
 		echo "could not create file"
 		exit 1
 	fi
-	exit 0
-elif [[ "$1" == *.docx || "$1" == *.pptx ||  "$1" == *.xlsx ||  "$1" == *.txt ]]; then
+elif [[ ${1,,} == *.jpeg || ${1,,} == *.jpg ]]; then
+	output="${1%.*}.pdf"
+	magick "$1" -quality 100 "$output"
+	if [ $? -eq 0 ]; then
+		echo "Converted: $1 -> $output"
+		converted=true
+	else
+		echo "could not create file"
+		exit 1
+	fi
+elif [[ ${1,,} == *.docx || ${1,,} == *.pptx || ${1,,} == *.xlsx || ${1,,} == *.txt ]]; then
 	output="${1%.*}.pdf"
 	libreoffice --headless --convert-to pdf "$1" --outdir "$(dirname "$1")"
 	if [ $? -eq 0 ]; then
 		echo "Converted: $1 -> $output"
+		converted=true
 	else
 		echo "could not create file"
 		exit 1
 	fi
-	exit 0
 else
 	echo "Supported file types: .png, .jpeg, .jpg, .docx, .pptx, .xlsx, .txt"
 	exit 1
+fi 
+if [[ $converted == true && "${2,,}" == true && -f "$output" ]]; then
+	rm "$1"
+	echo "File $1 removed!"
+	exit 0
+elif [[ ! -f "$output" ]]; then
+	echo "File failed to create. Try again!"
+	exit 1
+else
+	echo "Original File $1 was kept"
+	exit 0
 fi
 
