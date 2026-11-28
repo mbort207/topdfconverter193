@@ -28,7 +28,8 @@ cd topdfconverter193
 ```bash
 ./install.sh
 ```
-Note: `install.sh` uses `sudo`, so it will ask for your Linux password (the one you made during WSL or Linux setup. Don't remember your WSL password? Open powershell in Windows and run `wsl -u root`, then reset it `passwd yourWSLusername`). As you type, no asterisks or dots appear, which is normal. Just type it and press enter.
+Note: `install.sh` uses `sudo`, so it will ask for your Linux password (the one you made during WSL or Linux setup.) As you type, no asterisks or dots appear, which is normal. Just type it and press enter.
+Don't remember your WSL password? Open powershell in Windows and run `wsl -u root`, then type `exit`,  then reset it `passwd yourWSLusername`. You can find this with 'whoami'.
 
 4. You are ready! Follow the usage below for best results!
 
